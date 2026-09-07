@@ -13,12 +13,11 @@ jobs:
       NEXTAUTH_SECRET: ci-only-placeholder-secret
       NEXTAUTH_URL: http://localhost:3000
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      - run: npm install --include=optional
       - run: npm run lint
       - run: npm run build
-
